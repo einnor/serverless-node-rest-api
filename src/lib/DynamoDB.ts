@@ -6,7 +6,7 @@ import * as uuid from 'uuid/v1';
 
 AWS.config.update({ region: 'eu-west-1' });
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
-const TableName = Config.get('DYNAMO_TABLE');
+const TableName = Config.get('DYNAMODB_TABLE');
 
 export const createItem = (data: CreateEvent, callback: Callback) => {
   const timestamp = new Date().getTime();
