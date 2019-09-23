@@ -50,7 +50,7 @@ functions:
           cors: true
 
   delete:
-    handler: dist/handler.delete
+    handler: dist/handler.remove
     events:
       - http:
           path: pets/{id}

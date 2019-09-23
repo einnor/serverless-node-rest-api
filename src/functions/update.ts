@@ -11,7 +11,7 @@ export const update: Handler = (event: APIGatewayEvent, context: Context, callba
   const { pathParameters } = event;
   if (typeof pathParameters.id !== 'string') {
     console.error('Validation Failed');
-    callback(new Error('Validation Failed. Couldn\'t get the item.'));
+    callback(new Error('Validation Failed. Couldn\'t update the item.'));
     return;
   }
 

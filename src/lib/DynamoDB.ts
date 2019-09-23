@@ -124,3 +124,31 @@ export const updateItem = (id: string, data: UpdateEvent, callback: Callback) =>
     callback(null, response);
   });
 };
+
+export const deleteItem = (id: string, callback: Callback) => {
+  const key: Key = {
+    id
+  };
+
+  const params = {
+    TableName,
+    Key: key
+  }
+
+  // Delete item from database
+  dynamoDb.delete(params, (error) => {
+    // handle potential errors
+    if (error) {
+      console.log(error);
+      callback(new Error('Couldn\'t delete the item'));
+      return;
+    }
+
+    // Create a response
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify({})
+    };
+    callback(null, response);
+  });
+}
