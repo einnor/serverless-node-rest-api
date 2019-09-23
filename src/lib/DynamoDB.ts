@@ -1,6 +1,6 @@
 import * as AWS from 'aws-sdk';
-import { Callback } from 'aws-lambda';
-import { CreateEvent, Item } from '../types';
+import { Callback, DynamoDBRecord } from 'aws-lambda';
+import { CreateEvent, Item, Key } from '../types';
 import * as Config from '../lib/Config';
 import * as uuid from 'uuid/v1';
 
@@ -20,11 +20,13 @@ export const createItem = (data: CreateEvent, callback: Callback) => {
     Item: item
   };
 
+  // Create the record
   dynamoDb.put(record, (error) => {
     // handle potential errors
     if (error) {
       console.log(error);
-      callback(new Error('Couldn\'t create the pet item'));
+      callback(new Error('Couldn\'t create the item'));
+      return;
     }
 
     // Create a response
@@ -35,3 +37,31 @@ export const createItem = (data: CreateEvent, callback: Callback) => {
     callback(null, response);
   });
 };
+
+export const getItem = (id: string, callback: Callback) => {
+  const key: Key = {
+    id
+  };
+
+  const params = {
+    TableName: Config.get('DYNAMO_TABLE'),
+    Key: key
+  }
+
+  // Fetch item from database
+  dynamoDb.get(params, (error, result) => {
+    // handle potential errors
+    if (error) {
+      console.log(error);
+      callback(new Error('Couldn\'t get the item'));
+      return;
+    }
+
+    // Create a response
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify(result.Item)
+    };
+    callback(null, response);
+  });
+}

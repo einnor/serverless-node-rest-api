@@ -8,3 +8,7 @@ export interface Item extends CreateEvent {
   createdAt: number;
   updatedAt: number;
 };
+
+export interface Key {
+  id: string;
+};
