@@ -15,13 +15,13 @@ That's it!
 Then...
 
 Add a pet:
-`curl -X POST https://xxxxxxxxxx.execute-api.eu-west-1.amazonaws.com/dev/pets --data '{ "petName": "Bella", "petBreed": "Corgi" }'`
+`curl -X POST https://xxxxxxxxxx.execute-api.eu-west-1.amazonaws.com/dev/pets --data '{ "name": "Bella", "breed": "Corgi" }'`
 
 Sample response:
-`{"id":"618b4190-6917-11e7-82a3-ed6b88661fcb","petName":"Bella","petBreed":"Corgi","createdAt":1500093479977,"updatedAt":1500093479977}`
+`{"id":"618b4190-6917-11e7-82a3-ed6b88661fcb","name":"Bella","breed":"Corgi","createdAt":1500093479977,"updatedAt":1500093479977}`
 
 Add another pet:
-`curl -X POST https://xxxxxxxxxx.execute-api.eu-west-1.amazonaws.com/dev/pets --data '{ "petName": "Riley", "petBreed": "Jack Russell Mix" }'`
+`curl -X POST https://xxxxxxxxxx.execute-api.eu-west-1.amazonaws.com/dev/pets --data '{ "name": "Riley", "breed": "Jack Russell Mix" }'`
 
 List all pets:
 `curl https://xxxxxxxxxx.execute-api.eu-west-1.amazonaws.com/dev/pets`
