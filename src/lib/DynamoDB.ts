@@ -2,16 +2,15 @@ import * as AWS from 'aws-sdk';
 import { Callback } from 'aws-lambda';
 import { CreateEvent, UpdateEvent, Item, Key } from '../types';
 import * as Config from '../lib/Config';
-import * as uuid from 'uuid/v1';
+import * as uuid from 'uuid';
 
-AWS.config.update({ region: 'eu-west-1' });
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 const TableName = Config.get('DYNAMODB_TABLE');
 
 export const createItem = (data: CreateEvent, callback: Callback) => {
   const timestamp = new Date().getTime();
   const item: Item = {
-    id: uuid(),
+    id: uuid.v1(),
     name: data.name,
     breed: data.breed,
     createdAt: timestamp,

@@ -15,21 +15,21 @@ That's it!
 Then...
 
 Add a pet:
-`curl -X POST https://xxxxxxxxxx.execute-api.eu-west-1.amazonaws.com/dev/pets --data '{ "name": "Bella", "breed": "Corgi" }'`
+`curl -X POST https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/pets --data '{ "name": "Bella", "breed": "Corgi" }'`
 
 Sample response:
 `{"id":"618b4190-6917-11e7-82a3-ed6b88661fcb","name":"Bella","breed":"Corgi","createdAt":1500093479977,"updatedAt":1500093479977}`
 
 Add another pet:
-`curl -X POST https://xxxxxxxxxx.execute-api.eu-west-1.amazonaws.com/dev/pets --data '{ "name": "Riley", "breed": "Jack Russell Mix" }'`
+`curl -X POST https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/pets --data '{ "name": "Riley", "breed": "Jack Russell Mix" }'`
 
 List all pets:
-`curl https://xxxxxxxxxx.execute-api.eu-west-1.amazonaws.com/dev/pets`
+`curl https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/pets`
 
 List the details of a specific pet (in this case Bella from above):
-`curl https://xxxxxxxxxx.execute-api.eu-west-1.amazonaws.com/dev/pets/618b4190-6917-11e7-82a3-ed6b88661fcb`
+`curl https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/pets/618b4190-6917-11e7-82a3-ed6b88661fcb`
 
 General structure for listing specific pet details:
-`curl https://xxxxxxxxxx.execute-api.eu-west-1.amazonaws.com/dev/pets/id`
+`curl https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/pets/id`
 
 Inspired by - https://github.com/serverless/examples/tree/master/aws-node-rest-api-with-dynamodb
