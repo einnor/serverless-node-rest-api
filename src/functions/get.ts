@@ -10,7 +10,7 @@ export const get: Handler = (event: APIGatewayEvent, context: Context, callback:
   const { pathParameters } = event;
   if (typeof pathParameters.id !== 'string') {
     console.error('Validation Failed');
-    callback(new Error('Validation Failed. Couldn\'t get the pet item.'));
+    callback(new Error('Validation Failed. Couldn\'t get the item.'));
     return;
   }
 

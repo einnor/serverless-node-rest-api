@@ -1,6 +1,6 @@
 import * as AWS from 'aws-sdk';
 import { Callback } from 'aws-lambda';
-import { CreateEvent, Item, Key } from '../types';
+import { CreateEvent, UpdateEvent, Item, Key } from '../types';
 import * as Config from '../lib/Config';
 import * as uuid from 'uuid/v1';
 
@@ -85,6 +85,41 @@ export const listItems = (callback: Callback) => {
     const response = {
       statusCode: 200,
       body: JSON.stringify(result.Items)
+    };
+    callback(null, response);
+  });
+};
+
+export const updateItem = (id: string, data: UpdateEvent, callback: Callback) => {
+  const timestamp = new Date().getTime();
+  const key: Key = {
+    id
+  };
+
+  const params = {
+    TableName,
+    Key: key,
+    ExpressionAttributes: {
+      ':name': data.name,
+      ':breed': data.breed,
+      ':checked': data.checked,
+      ':updatedAt': timestamp
+    }
+  };
+
+  // Update the record
+  dynamoDb.update(params, (error, result) => {
+    // handle potential errors
+    if (error) {
+      console.log(error);
+      callback(new Error('Couldn\'t update the item'));
+      return;
+    }
+
+    // Create a response
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify(result.Attributes)
     };
     callback(null, response);
   });

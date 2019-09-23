@@ -12,3 +12,7 @@ export interface Item extends CreateEvent {
 export interface Key {
   id: string;
 };
+
+export interface UpdateEvent extends CreateEvent {
+  checked: boolean;
+};
