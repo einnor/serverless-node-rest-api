@@ -4,6 +4,7 @@ import { CreateEvent, UpdateEvent, Item, Key } from '../types';
 import * as Config from '../lib/Config';
 import * as uuid from 'uuid/v1';
 
+AWS.config.update({ region: 'eu-west-1' });
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 const TableName = Config.get('DYNAMO_TABLE');
 
